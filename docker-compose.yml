@@ -1,0 +1,18 @@
+version: "3"
+services:
+  webapp:
+    build: ./app
+    # ports:
+    #   - "3001"
+    links:
+      - webapi
+  webapi:
+    build: ./api
+    # ports:
+    #   - "3002"
+  loadbal:
+    build: ./lb
+    ports:
+      - "8080:80"
+    links:
+      - webapp

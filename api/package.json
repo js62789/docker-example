@@ -1,0 +1,20 @@
+{
+  "name": "docker-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "docker": "npm run docker:build && npm run docker:run",
+    "docker:build": "docker build -t dockerexample_webapi .",
+    "docker:run": "docker run -t --name=webapi dockerexample_webapi"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^1.25.1",
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "express-statsd": "^0.3.0"
+  }
+}
