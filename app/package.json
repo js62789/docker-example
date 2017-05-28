@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server",
+    "start": "node dist/server.bundle.js",
+    "dev": "webpack -d --watch",
+    "build": "webpack -p",
     "docker": "npm run docker:build && npm run docker:run",
     "docker:build": "docker build -t dockerexample_webapp .",
     "docker:run": "docker run -t --name=webapp dockerexample_webapp"
@@ -12,8 +14,30 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-react": "^6.24.1",
     "config": "^1.25.1",
     "express": "^4.15.2",
-    "express-statsd": "^0.3.0"
+    "express-statsd": "^0.3.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.5",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.0.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.3",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.0.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "style-loader": "^0.18.1",
+    "webpack": "^2.6.0",
+    "webpack-node-externals": "^1.6.0"
   }
 }
