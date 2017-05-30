@@ -27,6 +27,7 @@ class Application extends React.Component {
   }
   render = () => (
     <div>
+      <h1>Title</h1>
       <ul>
         {
           this.props.posts.map((post, i) => (

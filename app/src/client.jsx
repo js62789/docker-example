@@ -14,9 +14,22 @@ delete window.__PRELOADED_STATE__;
 // Create Redux store with initial state
 const store = createStore(reactApp, preloadedState);
 
-ReactDOM.render(
-  <Provider store={store}>
-    <Application />
-  </Provider>,
-  document.getElementById('root'), // eslint-disable-line no-undef
-);
+const render = (Component) => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <Component />
+    </Provider>,
+    document.getElementById('root'), // eslint-disable-line no-undef
+  );
+};
+
+render(Application);
+
+if (module.hot) {
+  module.hot.accept('./reducers', () => {
+    store.replaceReducer(require('./reducers').default);
+  });
+  module.hot.accept('./components/Application', () => {
+    render(require('./components/Application').default);
+  });
+}
