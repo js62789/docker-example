@@ -2,9 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
-const Visualizer = require('webpack-visualizer-plugin');
 
-const nodeEnv = process.env.NODE_ENV || 'development';
+const nodeEnv = process.env.NODE_ENV;
 const isProd = nodeEnv === 'production';
 
 const clientConfig = {
@@ -47,8 +46,8 @@ const clientConfig = {
 
   plugins: [
     new ExtractTextPlugin('styles.css'),
-    new webpack.DefinePlugin({
-      'process.env': { NODE_ENV: JSON.stringify(nodeEnv) },
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development',
     }),
   ],
 
@@ -77,6 +76,7 @@ if (isProd) {
     },
   }));
 } else {
+  const Visualizer = require('webpack-visualizer-plugin');
   clientConfig.devtool = 'inline-source-map';
   clientConfig.entry.client.unshift('webpack-hot-middleware/client?name=client');
   clientConfig.plugins.push(new Visualizer());
@@ -129,8 +129,35 @@ const serverConfig = {
       raw: true,
       entryOnly: false,
     }),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development',
+    }),
   ],
 
 };
+
+if (isProd) {
+  serverConfig.plugins.push(new webpack.LoaderOptionsPlugin({
+    minimize: true,
+    debug: false,
+  }));
+  serverConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false,
+      screw_ie8: true,
+      conditionals: true,
+      unused: true,
+      comparisons: true,
+      sequences: true,
+      dead_code: true,
+      evaluate: true,
+      if_return: true,
+      join_vars: true,
+    },
+    output: {
+      comments: false,
+    },
+  }));
+}
 
 module.exports = [clientConfig, serverConfig];

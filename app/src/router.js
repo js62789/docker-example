@@ -1,10 +1,9 @@
 import express from 'express';
 import serverRender from './renderMiddleware';
 
-const isProd = process.env.NODE_ENV === 'production';
 const router = express();
 
-if (isProd) {
+if (process.env.NODE_ENV === 'production') {
   router.use(express.static('dist'));
   router.use(serverRender);
 } else {

@@ -23,6 +23,6 @@ services:
   loadbal:
     build: ./lb
     ports:
-      - "8080:80"
+      - "9220:80"
     links:
       - webapp

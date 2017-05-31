@@ -2,7 +2,7 @@
   "apps": [
     {
       "name": "docker-example-app",
-      "script": "server.js",
+      "script": "dist/server.bundle.js",
       "merge_logs": true,
       "max_restarts": 20,
       "instances": 4,

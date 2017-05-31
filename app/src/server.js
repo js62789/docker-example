@@ -6,5 +6,5 @@ const server = http.createServer(app);
 const PORT = config.get('port');
 
 server.listen(PORT, () => {
-  console.log(`Running on http://localhost:${PORT}`);
+  console.log(`Running on http://localhost:${PORT} in ${config.util.getEnv('NODE_ENV')}`);
 });

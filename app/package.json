@@ -13,33 +13,34 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "config": "^1.25.1",
-    "express": "^4.15.2",
-    "express-statsd": "^0.3.0",
-    "prop-types": "^15.5.10",
-    "react": "^15.5.4",
-    "redux": "^3.6.0"
-  },
-  "devDependencies": {
+    "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.5.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "config": "^1.25.1",
     "css-loader": "^0.28.3",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.0.1",
+    "express": "^4.15.2",
     "extract-text-webpack-plugin": "^2.1.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
+    "redux": "^3.6.0",
+    "source-map-support": "^0.4.15",
     "style-loader": "^0.18.1",
     "webpack": "^2.6.0",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "devDependencies": {
     "webpack-dev-middleware": "^1.10.2",
     "webpack-hot-middleware": "^2.18.0",
-    "webpack-node-externals": "^1.6.0",
     "webpack-visualizer-plugin": "^0.1.11"
   }
 }

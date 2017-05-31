@@ -18,4 +18,6 @@ COPY . /usr/src/app
 
 EXPOSE 3001
 
+RUN npm run build
+
 CMD ["pm2-docker", "--json", "processes.json"]
