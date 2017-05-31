@@ -1,15 +1,25 @@
 version: "3"
 services:
   webapp:
-    build: ./app
+    build:
+      context: ./app
+      args:
+        - NODE_ENV
     # ports:
     #   - "3001"
     links:
       - webapi
+    environment:
+      - NODE_ENV
   webapi:
-    build: ./api
+    build:
+      context: ./api
+      args:
+        - NODE_ENV
     # ports:
     #   - "3002"
+    environment:
+      - NODE_ENV
   loadbal:
     build: ./lb
     ports:

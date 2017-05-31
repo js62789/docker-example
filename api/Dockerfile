@@ -5,9 +5,13 @@ RUN npm install pm2 -g
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
+ARG NODE_ENV
+
+ENV NODE_ENV ${NODE_ENV}
+
 # Install app dependencies
 COPY package.json /usr/src/app/
-RUN npm install
+RUN npm install --silent
 
 # Bundle app source
 COPY . /usr/src/app
