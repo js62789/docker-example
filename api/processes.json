@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "docker-node",
+      "name": "docker-example-api",
       "script": "server.js",
       "merge_logs": true,
       "max_restarts": 20,
