@@ -3,9 +3,9 @@ import express from 'express';
 import { createStore } from 'redux';
 import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
+import { StaticRouter as Router } from 'react-router-dom';
 import reactApp from './reducers';
-
-let Application = require('./components/Application').default;
+import Application from './components/Application';
 
 const router = express.Router();
 
@@ -13,12 +13,22 @@ router.get('*', (req, res) => {
   const preloadedState = {
     posts: ['Server loaded post'],
   };
+  const context = {};
   const store = createStore(reactApp, preloadedState);
   const html = ReactDOMServer.renderToString(
-    <Provider store={store}>
-      <Application />
-    </Provider>,
+    <Router location={req.url} context={context}>
+      <Provider store={store}>
+        <Application />
+      </Provider>
+    </Router>,
   );
+
+  if (context.url) {
+    // Somewhere a `<Redirect>` was rendered
+    res.redirect(301, context.url);
+    return;
+  }
+
   const finalState = store.getState();
   res.send(`
     <!doctype html>

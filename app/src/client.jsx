@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Application from './components/Application';
 import reactApp from './reducers';
 
@@ -17,7 +18,9 @@ const store = createStore(reactApp, preloadedState);
 const render = (Component) => {
   ReactDOM.render(
     <Provider store={store}>
-      <Component />
+      <Router>
+        <Component />
+      </Router>
     </Provider>,
     document.getElementById('root'), // eslint-disable-line no-undef
   );

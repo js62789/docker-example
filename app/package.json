@@ -26,6 +26,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
     "source-map-support": "^0.4.15",
     "style-loader": "^0.18.1",
